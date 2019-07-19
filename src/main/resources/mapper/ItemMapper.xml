@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hanma.hanmacommodityserver.item.mapper.ItemMapper">
+  <resultMap id="BaseResultMap" type="com.hanma.hanmacommodityserver.item.domain.Item">
+    <id column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="type_id" jdbcType="BIGINT" property="typeId" />
+    <result column="item_price" jdbcType="DOUBLE" property="itemPrice" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_countnum" jdbcType="INTEGER" property="itemCountnum" />
+    <result column="item_moneyoff" jdbcType="DOUBLE" property="itemMoneyoff" />
+    <result column="item_img" jdbcType="VARCHAR" property="itemImg" />
+    <result column="item_create_time" jdbcType="TIMESTAMP" property="itemCreateTime" />
+    <result column="item_update_time" jdbcType="TIMESTAMP" property="itemUpdateTime" />
+    <result column="item_yn" jdbcType="INTEGER" property="itemYn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    item_id, type_id, item_price, item_name, item_countnum, item_moneyoff, item_img,
+    item_create_time, item_update_time, item_yn
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_item
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_item
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hanma.hanmacommodityserver.item.domain.Item">
+    insert into t_item (item_id, type_id, item_price,
+      item_name, item_countnum, item_moneyoff,
+      item_img, item_create_time, item_update_time,
+      item_yn)
+    values (#{itemId,jdbcType=BIGINT}, #{typeId,jdbcType=BIGINT}, #{itemPrice,jdbcType=DOUBLE},
+      #{itemName,jdbcType=VARCHAR}, #{itemCountnum,jdbcType=INTEGER}, #{itemMoneyoff,jdbcType=DOUBLE},
+      #{itemImg,jdbcType=VARCHAR}, #{itemCreateTime,jdbcType=TIMESTAMP}, #{itemUpdateTime,jdbcType=TIMESTAMP},
+      #{itemYn,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hanma.hanmacommodityserver.item.domain.Item">
+    insert into t_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="itemPrice != null">
+        item_price,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="itemCountnum != null">
+        item_countnum,
+      </if>
+      <if test="itemMoneyoff != null">
+        item_moneyoff,
+      </if>
+      <if test="itemImg != null">
+        item_img,
+      </if>
+      <if test="itemCreateTime != null">
+        item_create_time,
+      </if>
+      <if test="itemUpdateTime != null">
+        item_update_time,
+      </if>
+      <if test="itemYn != null">
+        item_yn,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=BIGINT},
+      </if>
+      <if test="itemPrice != null">
+        #{itemPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCountnum != null">
+        #{itemCountnum,jdbcType=INTEGER},
+      </if>
+      <if test="itemMoneyoff != null">
+        #{itemMoneyoff,jdbcType=DOUBLE},
+      </if>
+      <if test="itemImg != null">
+        #{itemImg,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCreateTime != null">
+        #{itemCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemUpdateTime != null">
+        #{itemUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemYn != null">
+        #{itemYn,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hanma.hanmacommodityserver.item.domain.Item">
+    update t_item
+    <set>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=BIGINT},
+      </if>
+      <if test="itemPrice != null">
+        item_price = #{itemPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCountnum != null">
+        item_countnum = #{itemCountnum,jdbcType=INTEGER},
+      </if>
+      <if test="itemMoneyoff != null">
+        item_moneyoff = #{itemMoneyoff,jdbcType=DOUBLE},
+      </if>
+      <if test="itemImg != null">
+        item_img = #{itemImg,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCreateTime != null">
+        item_create_time = #{itemCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemUpdateTime != null">
+        item_update_time = #{itemUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemYn != null">
+        item_yn = #{itemYn,jdbcType=INTEGER},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hanma.hanmacommodityserver.item.domain.Item">
+    update t_item
+    set type_id = #{typeId,jdbcType=BIGINT},
+      item_price = #{itemPrice,jdbcType=DOUBLE},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      item_countnum = #{itemCountnum,jdbcType=INTEGER},
+      item_moneyoff = #{itemMoneyoff,jdbcType=DOUBLE},
+      item_img = #{itemImg,jdbcType=VARCHAR},
+      item_create_time = #{itemCreateTime,jdbcType=TIMESTAMP},
+      item_update_time = #{itemUpdateTime,jdbcType=TIMESTAMP},
+      item_yn = #{itemYn,jdbcType=INTEGER}
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+
+  <select id="queryItem" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select
+    <include refid="Base_Column_List" />
+    from t_item i WHERE i.type_id=#{id}
+  </select>
+
+  <select id="queryAllItem" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_item where item_yn=0
+  </select>
+
+  <update id="deleteItem" parameterType="java.lang.Long">
+    update t_item set item_yn=1 where item_id=#{id}
+  </update>
+</mapper>

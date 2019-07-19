@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration  
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+        <settings>
+                <!-- 驼峰转换,如查出的列名是user_id,自动放到实体类的userId属性中 -->
+                <setting name="mapUnderscoreToCamelCase" value="true"/>
+        </settings>
+        <!-- 自定义别名 -->
+        <typeAliases>
+                <!-- 单个别名  -->
+                <!-- 		<typeAlias alias="user" type="com.mr.pojo.User"/> -->
+                <!-- 扫描包下的类 -->
+                <!--  mybatis会自动扫描你指定包下面的类,  并且默认设置一个别名，
+                默认的名字为：类的首字母小写来作为它的别名。 -->
+                <package name="com.mr" />
+        </typeAliases>
+</configuration>
