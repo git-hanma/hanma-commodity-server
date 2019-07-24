@@ -24,6 +24,12 @@ public class TypeController {
     public List<Type> queryType(){
         return typeService.queryType();
     }
+    //根据id查询类目
+    @ResponseBody
+    @RequestMapping(value = "queryTypeById",method = RequestMethod.GET)
+    public List<Type> queryTypeById(Long id){
+        return typeService.queryTypeById(id);
+    }
     //新增类目
     @ResponseBody
     @RequestMapping("insertleimu")

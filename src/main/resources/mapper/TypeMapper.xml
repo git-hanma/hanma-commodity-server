@@ -119,4 +119,11 @@
   <update id="shanchuleimu" parameterType="java.lang.Long">
     update t_type set type_yn=1 where type_id=#{id}
   </update>
+
+  <select id="queryTypeById" parameterType="java.lang.Long" resultType="com.hanma.hanmacommodityserver.item.domain.Type">
+    select
+    <include refid="Base_Column_List" />
+    from t_type
+    where merchant_id=#{id} and type_yn=0
+  </select>
 </mapper>

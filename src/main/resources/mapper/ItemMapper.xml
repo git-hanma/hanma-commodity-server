@@ -154,7 +154,7 @@
   <select id="queryItem" resultMap="BaseResultMap" parameterType="java.lang.Long">
     select
     <include refid="Base_Column_List" />
-    from t_item i WHERE i.type_id=#{id}
+    from t_item i WHERE i.type_id=#{id} and item_yn=0
   </select>
 
   <select id="queryAllItem" resultMap="BaseResultMap">

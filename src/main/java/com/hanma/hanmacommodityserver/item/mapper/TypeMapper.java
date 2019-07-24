@@ -24,4 +24,6 @@ public interface TypeMapper {
     Type xiugaileimu(Long id);
 
     void shanchuleimu(Long id);
+
+    List<Type> queryTypeById(Long id);
 }

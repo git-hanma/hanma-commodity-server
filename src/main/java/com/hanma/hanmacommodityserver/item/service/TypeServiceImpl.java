@@ -41,4 +41,10 @@ public class TypeServiceImpl implements TypeService {
     public void shanchuleimu(Long id) {
         typeMapper.shanchuleimu(id);
     }
+
+    @Override
+    public List<Type> queryTypeById(Long id) {
+        List<Type> list=typeMapper.queryTypeById(id);
+        return list;
+    }
 }
